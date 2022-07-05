@@ -34,7 +34,7 @@ def get_data(data_dir):
         class_num = labels.index(label)
         for img in os.listdir(path):
             try:
-                img_arr = cv2.imread(os.path.join(path, img))[..., ::-1]  # BGR naar RGB format
+                img_arr = cv2.imread(os.path.join(path, img))[..., ::-1]  # BGR to RGB format
                 resized_arr = cv2.resize(img_arr, (img_size, img_size))   # reshaping images
                 data.append([resized_arr, class_num])                     
             except Exception as e:
@@ -124,7 +124,7 @@ model.add(Dropout(0.4))
 
 model.add(Flatten())
 model.add(Dense(128, activation="relu"))
-model.add(Dense(4, activation="softmax"))                                          # aanpassen voor aantal klasses
+model.add(Dense(4, activation="softmax"))                                          # change for amount classes
 
 model.summary()
 
